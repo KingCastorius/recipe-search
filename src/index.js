@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-let key = '9a895e58d6c80f07205a65d12169001d'
-let itemKey
+let key = 0;
+let APIkey = 9a895e58d6c80f07205a65d12169001d
+
 class Request extends React.Component {
 	state = {
 		rName: '',
@@ -12,7 +13,7 @@ class Request extends React.Component {
 	getRecipe(e) {
 		e.preventDefault()
 		axios.get('http://food2fork.com/api/get?q=' + this.state.rName).then((res) => {
-			let recipe = res.data.items.map(item => <li key={itemKey++}>{item.rId}</li>)
+			let recipe = res.data.items.map(item => <li key={key++}>{item.rId}</li>)
 			this.setState({returnedRecipes: recipe})
 		})
 	}
